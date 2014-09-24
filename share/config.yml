@@ -4,3 +4,10 @@ key:
     - genrsa
     - '-des3'
     - '-aes256'
+san:
+  country: C
+  commonname: CN
+  locality: L
+  state: ST
+  organization: O
+  organizational_unit: OU
