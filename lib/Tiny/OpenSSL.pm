@@ -3,7 +3,7 @@ use warnings;
 
 package Tiny::OpenSSL;
 
-# ABSTRACT: Default Abstract Description, Please Change.
+# ABSTRACT: Portable wrapper for OpenSSL Command
 # VERSION
 
 1;
