@@ -1,0 +1,6 @@
+key:
+  bits: 2048
+  opts:
+    - genrsa
+    - '-des3'
+    - '-aes256'
