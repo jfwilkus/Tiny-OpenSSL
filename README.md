@@ -12,6 +12,8 @@ $ cpanm Tiny::OpenSSL
 
 # Synopsis
 
+Ensure the `openssl` command is in your `$PATH`.
+
 ```
 use Tiny::OpenSSL::Key;
 use Tiny::OpenSSL::Subject;
