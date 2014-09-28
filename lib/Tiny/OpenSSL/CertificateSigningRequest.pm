@@ -6,6 +6,7 @@ package Tiny::OpenSSL::CertificateSigningRequest;
 # ABSTRACT: Certificate Signing Request object.
 # VERSION
 
+use Carp;
 use Moo;
 use Types::Standard qw( InstanceOf );
 use Path::Tiny;
