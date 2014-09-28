@@ -31,10 +31,8 @@ ok( $key->ascii($key_ascii) );
 ok( $key->file( Path::Tiny->tempfile ) );
 ok( $key->write, 'write key file' );
 
-my $key2 = Tiny::OpenSSL::Key->new( file => Path::Tiny->tempfile );
+my $key2 = Tiny::OpenSSL::Key->new( password => 'asdasdasd', bits => 1024 );
 
-ok( $key2->password('asdasdasd') );
-ok( $key2->bits(1024) );
 ok( $key2->create );
 
 is( $key2->ascii, $key2->file->slurp );
