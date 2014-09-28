@@ -3,7 +3,7 @@ use warnings;
 
 package Tiny::OpenSSL::CertificateSigningRequest;
 
-# ABSTRACT: Default Abstract Description, Please Change.
+# ABSTRACT: Certificate Signing Request object.
 # VERSION
 
 use Moo;
@@ -52,3 +52,15 @@ sub create {
 }
 
 1;
+
+=method subject
+
+A Tiny::OpenSSL::Subject object.
+
+=method key
+
+A Tiny::OpenSSL::Key object.
+
+=method create
+
+Create a certificate signing request.

@@ -3,7 +3,7 @@ use warnings;
 
 package Tiny::OpenSSL::Config;
 
-# ABSTRACT: Load default Tiny::OpenSSL::Config configuration
+# ABSTRACT: Load default Tiny::OpenSSL configuration
 # VERSION
 
 use YAML::Tiny;

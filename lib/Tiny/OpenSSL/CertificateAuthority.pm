@@ -3,7 +3,7 @@ use warnings;
 
 package Tiny::OpenSSL::CertificateAuthority;
 
-# ABSTRACT: Default Abstract Description, Please Change.
+# ABSTRACT: Certificate Authority object.
 # VERSION
 
 use Moo;
@@ -55,3 +55,16 @@ sub self_sign {
 }
 
 1;
+
+
+=method sign
+
+Sign a certificate.
+
+    my $ca->sign($csr);
+
+=method self_sign
+
+Self sign certificate.
+
+    my $ca->self_sign($csr);

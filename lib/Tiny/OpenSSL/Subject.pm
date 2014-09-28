@@ -3,7 +3,7 @@ use warnings;
 
 package Tiny::OpenSSL::Subject;
 
-# ABSTRACT: Default Abstract Description, Please Change.
+# ABSTRACT: X509 Subject object.
 # VERSION
 
 use Moo;
@@ -32,3 +32,7 @@ sub dn {
 }
 
 1;
+
+=method dn
+
+Returns the X509 subject string.

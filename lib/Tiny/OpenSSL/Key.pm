@@ -3,7 +3,7 @@ use warnings;
 
 package Tiny::OpenSSL::Key;
 
-# ABSTRACT: Wrapper for OpenSSL Key tasks
+# ABSTRACT: Key object.
 # VERSION
 
 use Carp;
@@ -52,3 +52,15 @@ sub create {
 }
 
 1;
+
+=method password
+
+Password for the key.
+
+=method bits
+
+Number of bits for the key, default is 2048.
+
+=method create
+
+Create key.

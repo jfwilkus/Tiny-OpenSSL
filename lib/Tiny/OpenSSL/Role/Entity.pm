@@ -3,7 +3,7 @@ use warnings;
 
 package Tiny::OpenSSL::Role::Entity;
 
-# ABSTRACT: Default Abstract Description, Please Change.
+# ABSTRACT: Provides common tasks for Tiny::OpenSSL objects.
 # VERSION
 
 use Moo::Role;
@@ -29,3 +29,16 @@ sub write {
 }
 
 1;
+
+=method ascii
+
+The ascii representation of the artifact.
+
+=method file
+
+The Path::Tiny object for the file.
+
+=method write
+
+Write the artifact to the file.  By default, the file is a Path::Tiny->tempfile, override to store permanently.
+
