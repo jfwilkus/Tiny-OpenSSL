@@ -13,11 +13,12 @@ use Path::Tiny;
 use Capture::Tiny qw( :all );
 use Tiny::OpenSSL::Config qw($CONFIG);
 
+with 'Tiny::OpenSSL::Role::Entity';
+
 has password => ( is => 'rw', isa => Str );
+
 has bits =>
     ( is => 'rw', isa => Int, default => sub { $CONFIG->{key}{bits} } );
-has ascii => ( is => 'rw', isa => Str );
-has file => ( is => 'rw', isa => InstanceOf ['Path::Tiny'] );
 
 sub create {
     my $self = shift;
@@ -48,17 +49,6 @@ sub create {
     $self->ascii( $self->file->slurp );
 
     return 1;
-}
-
-sub write {
-    my $self = shift;
-
-    if ( $self->file ) {
-        $self->file->spew( $self->ascii );
-        return 1;
-    }
-
-    return;
 }
 
 1;
