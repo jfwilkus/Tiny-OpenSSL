@@ -1,8 +1,14 @@
 # About
 
-Because sometimes I just need an OpenSSL wrapper that can be fatpacked.
+Because sometimes I just need an OpenSSL wrapper for Perl that can be fatpacked.
 
 This module is still under development.
+
+# Installation
+
+```
+$ cpanm Tiny::OpenSSL
+```
 
 # Synopsis
 
