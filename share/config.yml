@@ -4,6 +4,14 @@ key:
     - genrsa
     - '-des3'
     - '-aes256'
+req:
+  opts:
+    - req
+    - '-new'
+ca:
+  days: 3650
+  crl_days: 30
+  serial_number: 1
 san:
   country: C
   commonname: CN
