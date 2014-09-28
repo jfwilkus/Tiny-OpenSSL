@@ -7,6 +7,10 @@ This module is still under development.
 # Synopsis
 
 ```
+use Tiny::OpenSSL::Key;
+use Tiny::OpenSSL::Subject;
+use Tiny::OpenSSL::CertificateSigningRequest;
+
 my $key = Tiny::OpenSSL::Key->new(
     file     => 'ca.key',
     password => 'foo',
