@@ -28,17 +28,20 @@ sub self_sign {
         croak 'csr is not defined';
     }
 
-    my $pass_file = Path::Tiny->tempfile;
-    $pass_file->spew( $self->key->password );
-
     my @args = (
-        'x509',     '-req',
-        '-days',    $CONFIG->{ca}{days},
-        '-in',      $csr->file,
-        '-signkey', $self->key->file,
-        '-passin', sprintf( 'file:%s', $pass_file ),
-        '-out',    $self->file
+        'x509', '-req',     '-days',    $CONFIG->{ca}{days},
+        '-in',  $csr->file, '-signkey', $self->key->file,
+        '-out', $self->file
     );
+
+    if ( $csr->key->password ) {
+
+        my $pass_file = Path::Tiny->tempfile;
+        $pass_file->spew( $self->key->password );
+
+        push( @args, '-passin', sprintf( 'file:%s', $pass_file ) );
+
+    }
 
     my ( $stdout, $stderr, $exit ) = capture {
         system( $CONFIG->{openssl}, @args );

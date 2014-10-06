@@ -29,13 +29,15 @@ sub create {
 
     my @args = @{ $CONFIG->{req}{opts} };
 
+    push @args, '-new';
     push @args, '-subj', $self->subject->dn;
-    push @args, '-key',  $self->key->file;
+    push @args, '-key', $self->key->file;
 
-    my $pass_file = Path::Tiny->tempfile;
-    $pass_file->spew( $self->key->password );
-
-    push( @args, '-passin', sprintf( 'file:%s', $pass_file ) );
+    if ( defined $self->key->password ) {
+        my $pass_file = Path::Tiny->tempfile;
+        $pass_file->spew( $self->key->password );
+        push( @args, '-passin', sprintf( 'file:%s', $pass_file ) );
+    }
 
     push @args, '-out', $self->file;
 
