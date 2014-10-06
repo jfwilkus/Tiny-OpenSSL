@@ -28,6 +28,16 @@ sub write {
     return 1;
 }
 
+sub load {
+    my $self = shift;
+
+    if ( -f $self->file && $self->file->lines > 0 ) {
+        $self->ascii( $self->file->slurp );
+    }
+
+    return 1;
+}
+
 1;
 
 =method ascii
@@ -42,3 +52,6 @@ The Path::Tiny object for the file.
 
 Write the artifact to the file.  By default, the file is a Path::Tiny->tempfile, override to store permanently.
 
+=method load
+
+Load an existing key.
