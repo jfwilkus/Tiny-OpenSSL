@@ -2,8 +2,7 @@ key:
   bits: 2048
   opts:
     - genrsa
-    - '-des3'
-    - '-aes256'
+  block_cipher: 'aes256'
 req:
   opts:
     - req
