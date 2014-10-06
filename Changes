@@ -1,6 +1,10 @@
 Revision history for Tiny-OpenSSL
 
-{{$NEXT}}
+0.1.2 2014-10-06
+
+ - Set RSA block cipher to AES256
+ - Don't encrypt private key unless a password is defined.
+ - Load key if key file already exists when create is called.
 
 0.1.1 2014-09-28
 
