@@ -33,4 +33,11 @@ my $csr = Tiny::OpenSSL::CertificateSigningRequest->new(
     subject => $subject
 );
 
+$csr->create;
+
+ok( $cert->self_sign($csr) );
+
+# TODO: Will need to add a validate method to ensure this is an X509 cert
+ok( $cert->file->lines > 0 );
+
 done_testing;
