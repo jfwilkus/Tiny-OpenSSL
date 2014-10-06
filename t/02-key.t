@@ -4,14 +4,14 @@ use Path::Tiny;
 
 use_ok('Tiny::OpenSSL::Key');
 
-my $key = Tiny::OpenSSL::Key->new;
+my $key1 = Tiny::OpenSSL::Key->new;
 
-isa_ok( $key, 'Tiny::OpenSSL::Key' );
+isa_ok( $key1, 'Tiny::OpenSSL::Key' );
 
-can_ok( $key, 'password' );
-can_ok( $key, 'file' );
+can_ok( $key1, 'password' );
+can_ok( $key1, 'file' );
 
-$key->password('asdasdasd');
+$key1->password('asdasdasd');
 
 my $key_ascii = <<KEY;
 -----BEGIN RSA PRIVATE KEY-----
@@ -25,16 +25,30 @@ iX/4mXMThdBBQ8I5zKUOPgDvbOPLV+4LYCfP4Aji1Eo=
 -----END RSA PRIVATE KEY-----
 KEY
 
-is( $key->bits, 2048, 'key bits set to 2048 default' );
+is( $key1->bits, 2048, 'key bits set to 2048 default' );
 
-ok( $key->ascii($key_ascii) );
-ok( $key->file( Path::Tiny->tempfile ) );
-ok( $key->write, 'write key file' );
+ok( $key1->ascii($key_ascii) );
+ok( $key1->file( Path::Tiny->tempfile ) );
+ok( $key1->write, 'write key file' );
 
 my $key2 = Tiny::OpenSSL::Key->new( password => 'asdasdasd', bits => 1024 );
 
 ok( $key2->create );
 
 is( $key2->ascii, $key2->file->slurp );
+
+my $key3 = Tiny::OpenSSL::Key->new( bits => 1024 );
+
+ok( $key3->create, 'create a key without a password' );
+
+is( $key3->ascii, $key3->file->slurp );
+
+
+# Create a new key object but point to existing key file.
+# The new key contents must match existing key.
+my $key4 = Tiny::OpenSSL::Key->new( file => $key1->file );
+ok( $key4->create );
+
+is( $key4->ascii, $key_ascii, 'key was not loaded' );
 
 done_testing;
