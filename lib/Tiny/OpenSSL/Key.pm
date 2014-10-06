@@ -36,7 +36,7 @@ sub create {
         $pass_file = Path::Tiny->tempfile;
 
         $pass_file->spew( $self->password );
-        push( @args, sprintf('-%s', $CONFIG->{key}{block_cipher} ) );
+        push( @args, sprintf( '-%s', $CONFIG->{key}{block_cipher} ) );
         push( @args, '-passout', sprintf( 'file:%s', $pass_file ) );
     }
 
