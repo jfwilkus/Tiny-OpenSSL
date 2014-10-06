@@ -34,9 +34,11 @@ sub self_sign {
         '-out', $self->file
     );
 
+    my $pass_file;
+
     if ( $csr->key->password ) {
 
-        my $pass_file = Path::Tiny->tempfile;
+        $pass_file = Path::Tiny->tempfile;
         $pass_file->spew( $self->key->password );
 
         push( @args, '-passin', sprintf( 'file:%s', $pass_file ) );

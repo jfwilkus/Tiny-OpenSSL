@@ -33,8 +33,10 @@ sub create {
     push @args, '-subj', $self->subject->dn;
     push @args, '-key', $self->key->file;
 
-    if ( defined $self->key->password ) {
-        my $pass_file = Path::Tiny->tempfile;
+    my $pass_file;
+
+    if ( $self->key->password ) {
+        $pass_file = Path::Tiny->tempfile;
         $pass_file->spew( $self->key->password );
         push( @args, '-passin', sprintf( 'file:%s', $pass_file ) );
     }
