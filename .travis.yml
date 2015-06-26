@@ -9,11 +9,6 @@ before_install:
 install:
   - "sudo apt-get update"
   - "sudo apt-get install aspell aspell-en"
-  - "dzil authordeps | xargs cpanm"
-  - "dzil listdeps | xargs cpanm"
-  - "cpanm -n Pod::Weaver::Section::Changes"
-  - "cpanm -n Pod::Elemental::Transformer::List"
-  - "cpanm -n Test::Perl::Critic"
-  - "cpanm -n Pod::Coverage::TrustPod"
-  - "cpanm -n Types::Standard"
+  - "dzil authordeps --missing | cpanm -n -q"
+  - "dzil listdeps --missing | cpanm -n -q"
 script: "dzil smoke --release --author"
