@@ -15,4 +15,4 @@ script:
   - "dzil smoke --release --author"
   - "dzil cover"
   - "dzil build"
-  - "countperl Tiny::OpenSSL-*"
+  - "countperl Tiny-OpenSSL-*"
