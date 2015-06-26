@@ -5,10 +5,14 @@ perl:
   - "5.16"
   - "5.14"
 before_install:
-  - "cpanm -n Dist::Zilla"
-install:
   - "sudo apt-get update"
   - "sudo apt-get install aspell aspell-en"
+  - "cpanm -n -q Dist::Zilla"
+install:
   - "dzil authordeps --missing | cpanm -n -q"
   - "dzil listdeps --missing | cpanm -n -q"
-script: "dzil smoke --release --author"
+script:
+  - "dzil smoke --release --author"
+  - "dzil cover"
+  - "dzil build"
+  - "countperl Tiny::OpenSSL-*"
