@@ -2,8 +2,8 @@ Revision history for Tiny-OpenSSL
 
 {{$NEXT}}
 
+ - Add PKCS#12 support
  - Add sign method for CA
- - Import CI job execution script
 
 0.1.2 2014-10-06
 
