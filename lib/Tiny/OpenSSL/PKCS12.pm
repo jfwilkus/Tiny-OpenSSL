@@ -38,6 +38,19 @@ has passphrase => (
     required => 1
 );
 
+=method create
+
+Generates a PKCS12 file
+
+    my $p12 = Tiny::OpenSSL::PKCS12->new(
+        certificate => $cert,
+        key         => $key,
+        passphrase  => $passphrase,
+        identity    => $identity
+    );
+
+=cut
+
 sub create {
     my $self = shift;
 
