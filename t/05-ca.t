@@ -12,7 +12,7 @@ can_ok( 'Tiny::OpenSSL::CertificateAuthority', 'file' );
 can_ok( 'Tiny::OpenSSL::CertificateAuthority', 'self_sign' );
 can_ok( 'Tiny::OpenSSL::CertificateAuthority', 'sign' );
 
-my $key = Tiny::OpenSSL::Key->new( password => 'asdasdasd' );
+my $key = Tiny::OpenSSL::Key->new( password => 'RVcVbzkSMdyubL3AZxz7' );
 $key->create;
 
 my $subject = Tiny::OpenSSL::Subject->new(
